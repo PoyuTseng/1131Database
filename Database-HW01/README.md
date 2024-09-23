@@ -5,3 +5,4 @@
   - Flask test: app.py
   - Flask + MySQL test: db.py
   - Flask + Create Data in MySQL test: create.py
+ * Record by youtube: https://youtu.be/Q4qnY9xTYms
