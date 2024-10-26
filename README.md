@@ -13,7 +13,7 @@
 ## 作業連結區
 - **H.W1**: [Video](https://www.youtube.com/watch?v=Q4qnY9xTYms)
 - 將範本撰寫到VScode中，過程中出現環境錯誤等狀況，最後透過影片拍攝鍵入資料過程。
-- **H.W2**: [Video](https://youtu.be/q18jwjdXXJ8) | [MYSQL Workbench](超連結) | [ER-diagram](https://raw.githubusercontent.com/PoyuTseng/1131Database/refs/heads/main/Database-HW02/ER-diagram.webp)
+- **H.W2**: [Video](https://youtu.be/q18jwjdXXJ8) | [MYSQL Workbench](https://youtu.be/e3B8tasgMGc) | [ER-diagram](https://raw.githubusercontent.com/PoyuTseng/1131Database/refs/heads/main/Database-HW02/ER-diagram.webp)
 -   HW02撰寫過程：
 -   首先透過requirements先限制環境在Flask==3.0.3/mysql-connector==2.2.9/mysql-connector-python==9.0.0用以降低環境錯誤之情形。
 以DBeaver作為MySQL的輔助程式，將範本中的表格address複製到新的專案中，透過address01-07設定對應的資料收集項目用以生成對應的from，
