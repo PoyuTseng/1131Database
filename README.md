@@ -44,8 +44,7 @@
 過程中出現環境錯誤等狀況，最後透過影片拍攝鍵入資料過程。
 - **H.W2**: [Video](https://youtu.be/q18jwjdXXJ8) | [MYSQL Workbench](https://youtu.be/e3B8tasgMGc) | [ER-diagram](https://raw.githubusercontent.com/PoyuTseng/1131Database/refs/heads/main/Database-HW02/ER-diagram.webp)
 - **HW02階段性完成日誌**
-- 
-環境設置：
+- 環境設置：
 
 使用 requirements.txt 限制環境，鎖定以下版本以避免相容性問題：
 Flask==3.0.3
