@@ -9,7 +9,7 @@
 - **學號**：61171036H
 
 ## 作業連結區
-- **H.W1**: [Video](超連結)
+- **H.W1**: [Video](https://www.youtube.com/watch?v=Q4qnY9xTYms)
 - **H.W2**: [Video](超連結) | [MYSQL Workbench](超連結) | [ER-diagram](超連結)
 - **H.W3**: [超連結]
 - **H.W4**: [超連結]
