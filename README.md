@@ -14,12 +14,34 @@
 - **H.W1**: [Video](https://www.youtube.com/watch?v=Q4qnY9xTYms)
 - 將範本撰寫到VScode中，過程中出現環境錯誤等狀況，最後透過影片拍攝鍵入資料過程。
 - **H.W2**: [Video](https://youtu.be/q18jwjdXXJ8) | [MYSQL Workbench](https://youtu.be/e3B8tasgMGc) | [ER-diagram](https://raw.githubusercontent.com/PoyuTseng/1131Database/refs/heads/main/Database-HW02/ER-diagram.webp)
--   HW02撰寫過程：
--   首先透過requirements先限制環境在Flask==3.0.3/mysql-connector==2.2.9/mysql-connector-python==9.0.0用以降低環境錯誤之情形。
-以DBeaver作為MySQL的輔助程式，將範本中的表格address複製到新的專案中，透過address01-07設定對應的資料收集項目用以生成對應的from，
-當資料生成後會得到簡易版本的填寫框架與呈現表格，在透過Chat-GPT給予指令以CSS方式生成較精緻的網頁環境，並且將項目以主題中獎資訊作調整。
-逐步從建立資料為第一階段，第二階段拓展編輯與更新的功能並且搭配正負向的顏色作為按鈕的區分，作後將搜尋功能放置，以最底層呈現搜尋結果。
-透過實際操作的測試，均能夠在MySQL以及DBeaver中即時看到輸入的資料建檔。
+-   HW02階段性完成日誌
+環境設置：
+
+使用 requirements.txt 限制環境，鎖定以下版本以避免相容性問題：
+Flask==3.0.3
+mysql-connector==2.2.9
+mysql-connector-python==9.0.0
+使用 DBeaver 作為 MySQL 的輔助工具，方便資料庫管理和即時查詢。
+
+資料庫與表格結構建立：
+
+從範例資料庫中複製 address 表格至新專案的 MySQL 資料庫。
+設定 address01-07 七個不同的欄位以收集所需資料項目，並配置 address 表格來對應這些項目。
+
+前端表單與基本功能：
+
+透過表單呈現填寫框架，並讓填寫內容能顯示在網頁表格上，形成簡易的 CRUD 架構。
+在 ChatGPT 的協助下撰寫 CSS 來美化表格，為按鈕和主要區塊添加直觀的顏色區分，讓介面更符合主題並提升使用者體驗。
+CRUD 功能拓展與顏色區分按鈕：
+
+設置刪除（Delete）和更新（Update）按鈕，並以不同顏色區分正負向操作按鈕（如紅色刪除、綠色更新）。
+完成資料更新與刪除的即時顯示功能，確保資料庫變更即時反映在網頁介面上。
+
+搜尋功能設置與測試：
+
+加入以城市 ID 查詢的功能，並將查詢結果顯示在頁面底部。
+在 MySQL 與 DBeaver 中即時檢視資料輸入與更新，驗證資料準確性與即時性，確認所有操作功能正常運作。
+
 - **H.W3**: [超連結]
 - **H.W4**: [超連結]
 
