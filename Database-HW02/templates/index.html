@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Read Data</title>
+    <style>
+        /* Centering title and form container styling */
+        h1 {
+            text-align: center;
+            color: #333;
+            font-size: 24px;
+            margin-top: 20px;
+        }
+         /* Form container styling */
+         form {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #f5f7fa;
+            border-radius: 8px;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+            font-family: Arial, sans-serif;
+        }
+
+        h2 {
+            color: #409eff;
+            font-size: 18px;
+            margin-bottom: 16px;
+            text-align: center;
+        }
+
+        /* Label and input field styling */
+        label {
+            display: block;
+            margin: 8px 0 4px;
+            color: #606266;
+            font-weight: 500;
+        }
+        
+        /* Table styling */
+         .table-container {
+            max-width: 90%;
+            margin: 20px auto;
+            overflow-x: auto;
+        }
+
+        /* Table container styling */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+            font-family: Arial, sans-serif;
+        }
+
+        /* Table header styling */
+        thead {
+            background-color: #f5f7fa;
+            color: #606266;
+            font-weight: 500;
+            text-align: left;
+        }
+
+        thead th {
+            padding: 12px 16px;
+            font-size: 14px;
+            border-bottom: 1px solid #ebeef5;
+        }
+
+        /* Table body styling */
+        tbody tr {
+            border-bottom: 1px solid #ebeef5;
+            transition: background-color 0.3s;
+        }
+
+        tbody tr:hover {
+            background-color: #f2f6fc;
+        }
+
+        tbody td {
+            padding: 12px 16px;
+            font-size: 14px;
+            color: #606266;
+        }
+
+        /* Centered and green success button styling */
+        .button-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+         /* Button styles */
+         .success-button {
+            padding: 6px 12px;
+            margin: 4px;
+            background-color: #409eff; /* Blue */
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .success-button:hover {
+            background-color: #66b1ff;
+        }
+
+        .danger-button {
+            padding: 6px 12px;
+            margin: 4px;
+            background-color: #f56c6c; /* Red */
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .danger-button:hover {
+            background-color: #f78989;
+        }
+
+        /* Edit mode input fields */
+        input[type="text"],
+        input[type="number"] {
+            width: calc(100% - 8px);
+            padding: 6px;
+            border: 1px solid #dcdfe6;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+    </style>
+    <script>
+        function toggleEdit(addressId) {
+            const viewRow = document.getElementById(`view-row-${addressId}`);
+            const editRow = document.getElementById(`edit-row-${addressId}`);
+            viewRow.style.display = viewRow.style.display === 'none' ? '' : 'none';
+            editRow.style.display = editRow.style.display === 'none' ? '' : 'none';
+        }
+    </script>
+</head>
+<body>
+    <h1>中獎填寫資訊</h1>
+
+    <!-- 新增資料表單 -->
+    <h2>新增資訊</h2>
+    <form method="POST">
+        <label for="address">地址:</label>
+        <input type="text" id="address" name="address" required><br>
+
+        <label for="address2">地址2:</label>
+        <input type="text" id="address2" name="address2"><br>
+
+        <label for="district">地區:</label>
+        <input type="text" id="district" name="district" required><br>
+
+        <label for="city_id">郵遞區號:</label>
+        <input type="text" id="city_id" name="city_id" required><br>
+
+        <label for="postal_code">完整郵政編號:</label>
+        <input type="text" id="postal_code" name="postal_code" required><br>
+
+        <label for="phone">電話:</label>
+        <input type="text" id="phone" name="phone" required><br>
+
+        <label for="location">備註資訊(選填):</label>
+        <input type="text" id="location" name="location"><br>
+
+        <div class="button-container">
+            <button class="success-button" type="submit">添加</button>
+        </div>
+    </form>
+
+    <hr>
+
+    <h2>搜索地址 (郵遞區號查詢)</h2>
+    <form method="GET" action="{{ url_for('search_by_city') }}">
+        <label for="search_city_id">郵遞區號查詢:</label>
+        <input type="number" id="search_city_id" name="city_id" required>
+        <div class="button-container">
+            <button class="success-button" type="submit">搜索</button>
+        </div>
+    </form>
+
+    <hr>
+
+    <h2>地址列表</h2>
+    <div class="table-container">
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>地址ID</th>
+                    <th>地址</th>
+                    <th>地址2</th>
+                    <th>地區</th>
+                    <th>郵遞區號</th>
+                    <th>完整郵政編號</th>
+                    <th>電話</th>
+                    <th>最後更新時間</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for address in addresses %}
+                <!-- 顯示模式 -->
+                <tr id="view-row-{{ address[0] }}">
+                    <td>{{ address[0] }}</td>
+                    <td>{{ address[1] }}</td>
+                    <td>{{ address[2] }}</td>
+                    <td>{{ address[3] }}</td>
+                    <td>{{ address[4] }}</td>
+                    <td>{{ address[5] }}</td>
+                    <td>{{ address[6] }}</td>
+                    <td>{{ address[7] }}</td>
+                    <td>
+                        <button class="success-button" type="button" onclick="toggleEdit({{ address[0] }})">編輯</button>
+                        <form method="POST" action="{{ url_for('delete_bp.delete_address', address_id=address[0]) }}" style="display:inline;">
+                            <button class="danger-button" type="submit">刪除</button>
+                        </form>
+                    </td>
+                </tr>
+
+                <!-- 編輯模式 -->
+                <tr id="edit-row-{{ address[0] }}" style="display:none;">
+                    <form method="POST" action="{{ url_for('update_bp.update_post', post_id=address[0]) }}">
+                        <td>{{ address[0] }}</td>
+                        <td><input type="text" name="post_{{ address[0] }}_address" value="{{ address[1] }}"></td>
+                        <td><input type="text" name="post_{{ address[0] }}_address2" value="{{ address[2] }}"></td>
+                        <td><input type="text" name="post_{{ address[0] }}_district" value="{{ address[3] }}"></td>
+                        <td><input type="number" name="post_{{ address[0] }}_city_id" value="{{ address[4] }}"></td>
+                        <td><input type="text" name="post_{{ address[0] }}_postal_code" value="{{ address[5] }}"></td>
+                        <td><input type="text" name="post_{{ address[0] }}_phone" value="{{ address[6] }}"></td>
+                        <td>{{ address[7] }}</td>
+                        <td>
+                            <button class="success-button" type="submit">保存</button>
+                            <button class="danger-button" type="button" onclick="toggleEdit({{ address[0] }})">取消</button>
+                        </td>
+                    </form>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
