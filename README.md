@@ -1,4 +1,4 @@
-# 1131Database
+# 1131師大科技系資料庫系統(Database)
 # 授課教師
 蔡芸琤老師  
 [老師的 GitHub](https://github.com/peculab/Database)
@@ -7,6 +7,8 @@
 - **姓名**：曾伯宇
 - **系級**：科技系碩士班三年級
 - **學號**：61171036H
+
+## 課程筆記區
 
 ## 作業連結區
 - **H.W1**: [Video](https://www.youtube.com/watch?v=Q4qnY9xTYms)
