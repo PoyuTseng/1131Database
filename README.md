@@ -73,7 +73,30 @@ mysql-connector-python==9.0.0
 加入以 city_ID(城市郵遞區號) 查詢的功能，並將查詢結果顯示在頁面底部。
 在 MySQL 與 DBeaver 中即時檢視資料輸入與更新，驗證資料準確性與即時性，確認所有操作功能正常運作。
 
-- **H.W3**: [超連結]
+- **H.W3**: [Video](https://youtu.be/IkiyzLHPZ08)
+- **HW02階段性完成日誌**
+- MongoDB安裝相關資料建立
+  
+安裝MongoDB程式並創建new connection串聯
+
+- VScode中環境建構、相關資料建立與執行
+  
+透過指令:
+mkdir noSQL
+cd .\noSQL\
+python -m venv .vene
+於VScode中建立noSQL資料 並 設定環境
+pip install Flask pymongo
+
+- noSQL搜尋功能設置與測試執行
+
+透過VScode中noSQL目錄下noSQL.py執行，進入Startup Log頁面中可以看到相關的Document ID與Shwo details等資料
+點擊Creat New Entrys切換至Create a New Entry輸入資料頁面
+鍵入任意資料Ex Name:Alice / Description:SAO後 點擊Create
+畫面跳轉至Startup Log並出現新資料點擊Show details便可查閱剛鍵入之資料
+轉換至MongoDB中localhost2707目錄下local中startup_log內點擊Refresh即可看到新鍵入之資料
+
+
 - **H.W4**: [超連結]
 
 ## 專題連結區
