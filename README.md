@@ -97,8 +97,8 @@ pip install Flask pymongo
 轉換至MongoDB中localhost2707目錄下local中startup_log內點擊Refresh即可看到新鍵入之資料
 
 
-- **H.W4**: [(https://www.youtube.com/watch?v=CQaoB5r4HIk&ab_channel=PoYuTseng)]
-**HW04階段性完成日誌**
+- **H.W4**: [Video](https://youtu.be/CQaoB5r4HIk?si=ZhCgXX9F0RGE96Hg)
+- **HW04階段性完成日誌**
 - MongoDB相關問題排除
   
 在透過MongoDB程式串聯VScode環境建構時遇到
