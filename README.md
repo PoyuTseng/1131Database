@@ -42,7 +42,7 @@
 優化頁面以適應行動設備的顯示。 
 
 過程中出現環境錯誤等狀況，最後透過影片拍攝鍵入資料過程。
-- **H.W2**: [Video](https://youtu.be/q18jwjdXXJ8) | [MYSQL Workbench](https://youtu.be/e3B8tasgMGc) | [ER-diagram](https://raw.githubusercontent.com/PoyuTseng/1131Database/refs/heads/main/Database-HW02/ER-diagram.webp)
+- **H.W2**: [Video](https://youtu.be/q18jwjdXXJ8) | [MYSQL Workbench](https://youtu.be/e3B8tasgMGc) | [New ER-diagram](https://github.com/PoyuTseng/1131Database/blob/main/Database-HW02/ER-Diagram.jpg)
 - **HW02階段性完成日誌**
 - 環境設置：
 
