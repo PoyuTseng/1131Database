@@ -42,8 +42,8 @@
 優化頁面以適應行動設備的顯示。 
 
 過程中出現環境錯誤等狀況，最後透過影片拍攝鍵入資料過程。
-- **H.W2**: [Video](https://youtu.be/q18jwjdXXJ8) | [MYSQL Workbench](https://youtu.be/e3B8tasgMGc) | [ER-diagram](https://raw.githubusercontent.com/PoyuTseng/1131Database/refs/heads/main/Database-HW02/ER-diagram.webp)
-- **HW02階段性完成日誌**
+- **H.W2**: [Video](https://youtu.be/q18jwjdXXJ8) | [MYSQL Workbench](https://youtu.be/e3B8tasgMGc) | [New ER-diagram](https://github.com/PoyuTseng/1131Database/blob/main/Database-HW02/ER-Diagram.jpg)
+- **HW03階段性完成日誌**
 - 環境設置：
 
 使用 requirements.txt 限制環境，鎖定以下版本以避免相容性問題：
@@ -74,7 +74,7 @@ mysql-connector-python==9.0.0
 在 MySQL 與 DBeaver 中即時檢視資料輸入與更新，驗證資料準確性與即時性，確認所有操作功能正常運作。
 
 - **H.W3**: [Video](https://youtu.be/IkiyzLHPZ08)
-- **HW02階段性完成日誌**
+- **HW03階段性完成日誌**
 - MongoDB安裝相關資料建立
   
 安裝MongoDB程式並創建new connection串聯
@@ -97,7 +97,32 @@ pip install Flask pymongo
 轉換至MongoDB中localhost2707目錄下local中startup_log內點擊Refresh即可看到新鍵入之資料
 
 
-- **H.W4**: [超連結]
+- **H.W4**: [Video](https://youtu.be/CQaoB5r4HIk?si=ZhCgXX9F0RGE96Hg)
+- **HW04階段性完成日誌**
+- MongoDB相關問題排除
+  
+在透過MongoDB程式串聯VScode環境建構時遇到
+ModuleNotFoundError: No module named 'bson'
+ImportError: cannot import name 'SON' from 'bson' (d:\1131DB\1131Database\.vene\Lib\site-packages\bson\__init__.py)
+ModuleNotFoundError: No module named 'bson.objectid'
+等相關問題。
+透過安裝 pymongo 與 確保只使用 pymongo 的 bson 等方式進行排除
+卸載可能導致衝突的獨立 bson 套件：
+pip uninstall bson
+pip uninstall pymongo
+重新安裝 正確版本的 pymongo（這會自動包含適當的 bson 模組）：
+pip install pymongo
+這樣可以確保 bson 是由 pymongo 提供的，且包含 SON。
+
+- 透過noSQL功能設置與測試執行
+
+透過VScode中noSQL目錄下noSQL.py執行，進入Startup Log頁面中可以看到相關的Document ID與Shwo details等資料
+點擊Creat New Entrys切換至Create a New Entry輸入資料頁面
+鍵入任意資料後 點擊Create
+透過Show/Hide顯示或隱藏資料列
+並且可以對資料進行刪除與編輯修改
+畫面跳轉至Show details便可查閱剛鍵入之資料
+轉換至MongoDB中localhost2707目錄下local中startup_log內點擊Refresh即可看到新鍵入之資料或經由刪除後更新的資料資訊
 
 ## 專題連結區
 - [專題連結](超連結)
