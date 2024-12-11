@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>課程查詢系統</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+        }
+        .container {
+            margin: 20px auto;
+            width: 80%;
+            padding: 20px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>課程查詢系統</h1>
+        <form id="courseSearchForm">
+            <label for="college">學院：</label>
+            <select id="college" name="college">
+                <option value="">所有學院</option>
+                <option value="理學院">理學院</option>
+                <option value="藝術學院">藝術學院</option>
+            </select>
+
+            <label for="department">系所：</label>
+            <select id="department" name="department">
+                <option value="">所有系所</option>
+                <option value="資訊工程學系">資訊工程學系</option>
+                <option value="設計學系">設計學系</option>
+            </select>
+
+            <button type="button" onclick="searchCourses()">查詢課程</button>
+        </form>
+
+        <div id="results"></div>
+    </div>
+
+    <script>
+        async function searchCourses() {
+            const formData = new FormData(document.getElementById('courseSearchForm'));
+            const filters = Object.fromEntries(formData.entries());
+
+            const response = await fetch('/get_courses', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(filters)
+            });
+
+            const courses = await response.json();
+            displayResults(courses);
+        }
+
+        function displayResults(courses) {
+            const resultsDiv = document.getElementById('results');
+            resultsDiv.innerHTML = '';
+
+            if (courses.length === 0) {
+                resultsDiv.innerHTML = '<p>未找到符合條件的課程。</p>';
+                return;
+            }
+
+            courses.forEach(course => {
+                const courseDiv = document.createElement('div');
+                courseDiv.innerHTML = `<h3>${course.name}</h3><p>學院: ${course.college}, 系所: ${course.department}</p>`;
+                resultsDiv.appendChild(courseDiv);
+            });
+        }
+    </script>
+</body>
+</html>

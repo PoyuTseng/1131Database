@@ -1,0 +1,128 @@
+[
+    {
+        "college": "教育學院",
+        "departments": [
+            {
+                "department": "教育學系",
+                "courses": [
+                    {
+                        "course_name": "教育學概論",
+                        "course_code": "EDU101",
+                        "credit": 3,
+                        "semester": "上學期",
+                        "degree": "學士班",
+                        "course_type": "必修"
+                    },
+                    {
+                        "course_name": "教育心理學",
+                        "course_code": "EDU102",
+                        "credit": 3,
+                        "semester": "下學期",
+                        "degree": "學士班",
+                        "course_type": "選修"
+                    },
+                    {
+                        "course_name": "教育統計學",
+                        "course_code": "EDU103",
+                        "credit": 3,
+                        "semester": "上學期",
+                        "degree": "碩士班",
+                        "course_type": "選修"
+                    }
+                ]
+            },
+            {
+                "department": "教育心理與輔導學系",
+                "courses": [
+                    {
+                        "course_name": "心理學導論",
+                        "course_code": "PSY101",
+                        "credit": 3,
+                        "semester": "上學期",
+                        "degree": "碩士班",
+                        "course_type": "必修"
+                    },
+                    {
+                        "course_name": "輔導技巧",
+                        "course_code": "PSY102",
+                        "credit": 3,
+                        "semester": "下學期",
+                        "degree": "碩士班",
+                        "course_type": "選修"
+                    },
+                    {
+                        "course_name": "行為改變技術",
+                        "course_code": "PSY103",
+                        "credit": 3,
+                        "semester": "上學期",
+                        "degree": "碩士班",
+                        "course_type": "選修"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "college": "理學院",
+        "departments": [
+            {
+                "department": "數學系",
+                "courses": [
+                    {
+                        "course_name": "高等數學",
+                        "course_code": "MATH101",
+                        "credit": 3,
+                        "semester": "上學期",
+                        "degree": "學士班",
+                        "course_type": "必修"
+                    },
+                    {
+                        "course_name": "線性代數",
+                        "course_code": "MATH102",
+                        "credit": 3,
+                        "semester": "下學期",
+                        "degree": "學士班",
+                        "course_type": "選修"
+                    },
+                    {
+                        "course_name": "數學建模",
+                        "course_code": "MATH103",
+                        "credit": 3,
+                        "semester": "上學期",
+                        "degree": "碩士班",
+                        "course_type": "選修"
+                    }
+                ]
+            },
+            {
+                "department": "物理學系",
+                "courses": [
+                    {
+                        "course_name": "力學",
+                        "course_code": "PHY101",
+                        "credit": 3,
+                        "semester": "上學期",
+                        "degree": "學士班",
+                        "course_type": "必修"
+                    },
+                    {
+                        "course_name": "熱力學",
+                        "course_code": "PHY102",
+                        "credit": 3,
+                        "semester": "下學期",
+                        "degree": "學士班",
+                        "course_type": "選修"
+                    },
+                    {
+                        "course_name": "量子力學",
+                        "course_code": "PHY103",
+                        "credit": 3,
+                        "semester": "上學期",
+                        "degree": "碩士班",
+                        "course_type": "選修"
+                    }
+                ]
+            }
+        ]
+    }
+]

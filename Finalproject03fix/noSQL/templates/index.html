@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>課程選擇系統</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+        }
+        .container {
+            margin: 20px auto;
+            width: 80%;
+            padding: 20px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>課程選擇系統</h1>
+        <form id="selectionForm">
+            <div class="form-group">
+                <label for="userName">姓名：</label>
+                <input type="text" id="userName" name="userName" required>
+            </div>
+            <div class="form-group">
+                <label for="college">學院：</label>
+                <select id="college" name="college" onchange="updateDepartments()">
+                    <option value="">請選擇學院</option>
+                    <option value="理學院">理學院</option>
+                    <option value="藝術學院">教育學院</option>
+                    <option value="藝術學院">藝術學院</option>
+                    <option value="藝術學院">社會科學學院</option>
+                    <option value="藝術學院">商學院</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="department">系所：</label>
+                <select id="department" name="department" onchange="updateCourses()">
+                    <option value="">請先選擇學院</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="course">課程：</label>
+                <select id="course" name="course">
+                    <option value="">請先選擇系所</option>
+                </select>
+            </div>
+            <button type="button" onclick="submitSelection()">提交</button>
+        </form>
+    </div>
+
+    <script>
+        const departmentData = {
+            "理學院": ["資訊工程學系", "數學系", "物理學系"],
+            "教育學院": ["教育學系", "特殊教育學系", "國際事務學系"],
+            "藝術學院": ["美術學系", "音樂學系", "戲劇學系"],
+            "社會科學學院": ["社會學系", "心理學系", "政治學系"],
+            "商學院": ["國際企業學系", "財務金融學系"]
+        };
+
+        const courseData = {
+            "資訊工程學系": ["Python 基礎", "資料結構與演算法", "作業系統概論", "人工智慧導論", "計算機組織與設計"],
+            "數學系": ["高等微積分", "線性代數", "常微分方程", "機率論", "數理邏輯"],
+            "物理學系": ["經典力學", "量子力學", "電磁學", "熱力學與統計物理", "固態物理"],
+            "教育學系": ["教育心理學", "學習與教育導論", "課程設計與發展", "教學評量與回饋", "教育社會學"],
+            "特殊教育學系": ["特殊教育概論", "行為管理", "語言發展與障礙", "特殊需求學生的教育", "特殊教育法律與政策"],
+            "國際事務學系":["國際關係", "全球化與發展", "國際組織與合作", "跨文化交流", "國際公共政策"],
+            "美術學系":["繪畫技法", "藝術史概論", "雕塑基礎", "視覺藝術設計", "數位藝術"],
+            "音樂學系": ["音樂理論", "音樂歷史", "鋼琴技巧", "管弦樂指揮", "音樂創作"],
+            "戲劇學系": ["表演藝術", "劇本創作", "舞台設計與技術", "導演技巧", "戲劇史"],
+            "社會學系": ["社會學理論", "社會調查方法", "犯罪學", "性別與社會", "社會變遷"],
+            "心理學系": ["心理學導論", "發展心理學", "社會心理學", "心理測量", "臨床心理學"],
+            "政治學系": ["政治學概論", "國際政治", "比較政治學", "台灣政治", "公共政策分析"],
+            "國際企業學系":["國際行銷", "跨文化管理", "全球戰略", "國際財務管理", "國際貿易"],
+            "財務金融學系": ["財務管理", "公司理財", "投資學", "風險管理", "金融市場"],
+        };
+
+        function updateDepartments() {
+            const college = document.getElementById('college').value;
+            const departmentSelect = document.getElementById('department');
+            departmentSelect.innerHTML = '<option value="">請先選擇學院</option>';
+            if (college && departmentData[college]) {
+                departmentData[college].forEach(department => {
+                    const option = document.createElement('option');
+                    option.value = department;
+                    option.textContent = department;
+                    departmentSelect.appendChild(option);
+                });
+            }
+        }
+
+        function updateCourses() {
+            const department = document.getElementById('department').value;
+            const courseSelect = document.getElementById('course');
+            courseSelect.innerHTML = '<option value="">請先選擇系所</option>';
+            if (department && courseData[department]) {
+                courseData[department].forEach(course => {
+                    const option = document.createElement('option');
+                    option.value = course;
+                    option.textContent = course;
+                    courseSelect.appendChild(option);
+                });
+            }
+        }
+
+        function submitSelection() {
+            const userName = document.getElementById('userName').value;
+            const course = document.getElementById('course').value;
+
+            if (!userName || !course) {
+                alert("請填寫姓名並選擇課程");
+                return;
+            }
+
+            localStorage.setItem('userName', userName);
+            localStorage.setItem('selectedCourse', course);
+
+            window.location.href = '/selection_result';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>課程選擇系統</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+        }
+        .container {
+            margin: 20px auto;
+            width: 80%;
+            padding: 20px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>課程選擇系統</h1>
+        <form id="selectionForm">
+            <div class="form-group">
+                <label for="userName">姓名：</label>
+                <input type="text" id="userName" name="userName" required>
+            </div>
+            <div class="form-group">
+                <label for="college">學院：</label>
+                <select id="college" name="college" onchange="updateDepartments()">
+                    <option value="">請選擇學院</option>
+                    <option value="理學院">理學院</option>
+                    <option value="藝術學院">藝術學院</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="department">系所：</label>
+                <select id="department" name="department" onchange="updateCourses()">
+                    <option value="">請先選擇學院</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="course">課程：</label>
+                <select id="course" name="course">
+                    <option value="">請先選擇系所</option>
+                </select>
+            </div>
+            <button type="button" onclick="submitSelection()">提交</button>
+        </form>
+    </div>
+
+    <script>
+        const departmentData = {
+            "理學院": ["資訊工程學系", "數學系"],
+            "藝術學院": ["設計學系", "音樂學系"]
+        };
+
+        const courseData = {
+            "資訊工程學系": ["Python 基礎", "資料結構"],
+            "數學系": ["高等微積分", "線性代數"],
+            "設計學系": ["設計概論", "創意思考"],
+            "音樂學系": ["樂理基礎", "視唱練耳"]
+        };
+
+        function updateDepartments() {
+            const college = document.getElementById('college').value;
+            const departmentSelect = document.getElementById('department');
+            departmentSelect.innerHTML = '<option value="">請先選擇學院</option>';
+            if (college && departmentData[college]) {
+                departmentData[college].forEach(department => {
+                    const option = document.createElement('option');
+                    option.value = department;
+                    option.textContent = department;
+                    departmentSelect.appendChild(option);
+                });
+            }
+        }
+
+        function updateCourses() {
+            const department = document.getElementById('department').value;
+            const courseSelect = document.getElementById('course');
+            courseSelect.innerHTML = '<option value="">請先選擇系所</option>';
+            if (department && courseData[department]) {
+                courseData[department].forEach(course => {
+                    const option = document.createElement('option');
+                    option.value = course;
+                    option.textContent = course;
+                    courseSelect.appendChild(option);
+                });
+            }
+        }
+
+        function submitSelection() {
+            const userName = document.getElementById('userName').value;
+            const course = document.getElementById('course').value;
+
+            if (!userName || !course) {
+                alert("請填寫姓名並選擇課程");
+                return;
+            }
+
+            localStorage.setItem('userName', userName);
+            localStorage.setItem('selectedCourse', course);
+
+            window.location.href = '/selection_result';
+        }
+    </script>
+</body>
+</html>

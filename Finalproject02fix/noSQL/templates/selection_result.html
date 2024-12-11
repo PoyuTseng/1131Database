@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>選課結果</title>
+</head>
+<body>
+    <h1>選課結果</h1>
+    <div id="result">
+        <p><strong>姓名：</strong> <span id="userName"></span></p>
+        <p><strong>課程：</strong> <span id="selectedCourse"></span></p>
+    </div>
+    <button onclick="editSelection()">編輯課程</button>
+    <button onclick="deleteSelection()">刪除課程</button>
+    <br><br>
+    <button onclick="goBack()">返回選課頁面</button>
+
+    <script>
+        document.getElementById('userName').textContent = localStorage.getItem('userName');
+        document.getElementById('selectedCourse').textContent = localStorage.getItem('selectedCourse');
+
+        function editSelection() {
+            alert("請返回選課頁面進行修改。");
+        }
+
+        function deleteSelection() {
+            if (confirm("確定要刪除選課資料嗎？")) {
+                localStorage.removeItem('userName');
+                localStorage.removeItem('selectedCourse');
+                alert("已刪除選課資料。");
+                goBack();
+            }
+        }
+
+        function goBack() {
+            window.location.href = '/';
+        }
+    </script>
+</body>
+</html>
