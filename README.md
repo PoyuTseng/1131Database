@@ -125,7 +125,7 @@ pip install pymongo
 轉換至MongoDB中localhost2707目錄下local中startup_log內點擊Refresh即可看到新鍵入之資料或經由刪除後更新的資料資訊
 
 ## 專題連結區
-- [專題連結](超連結)
+- [專題操作影片與版本增修排除問題以及介紹](https://youtu.be/lY4q3ExCdFc))
 - **期末專題階段性完成日誌**
 - **最初構想**
 構想的目標希望建構一個可以供學生進行每學期課程事先安排的預選網站，
