@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>選課結果</title>
+</head>
+<body>
+    <h1>選課結果</h1>
+    <ul>
+        {% for record in history %}
+        <li>
+            姓名：{{ record.userName }}<br>
+            課程：
+            <ul>
+                {% for course in record.courses %}
+                <li>
+                    {{ course }}
+                    <input type="checkbox" name="modify_course" value="{{ course }}">
+                    <button onclick="deleteCourse('{{ record._id }}', '{{ course }}')">刪除</button>
+                </li>
+                {% endfor %}
+            </ul>
+        </li>
+        {% endfor %}
+    </ul>
+
+    <script>
+        function deleteCourse(id, course) {
+            fetch('/delete_course', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ id, course })
+            }).then(() => location.reload());
+        }
+    </script>
+</body>
+</html>

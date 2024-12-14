@@ -48,10 +48,18 @@ def delete_course():
     data = request.json
     selection_id = ObjectId(data.get("id"))
     course_to_delete = data.get("course")
+    
+    # 更新選課紀錄，刪除指定的課程
     selection_history_collection.update_one(
         {"_id": selection_id},
         {"$pull": {"courses": course_to_delete}}
     )
+    
+    # 檢查該使用者的課程是否為空，如果為空則刪除該筆資料
+    record = selection_history_collection.find_one({"_id": selection_id})
+    if not record['courses']:  # 如果課程數組為空
+        selection_history_collection.delete_one({"_id": selection_id})
+    
     return jsonify({"message": "Course deleted!"})
 
 @app.route('/edit_course', methods=['POST'])

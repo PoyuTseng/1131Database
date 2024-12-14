@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>課程選擇結果</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f2f2f2; margin: 0; padding: 0; }
+        .container { margin: 20px auto; width: 90%; max-width: 600px; padding: 20px; background: #fff; border-radius: 8px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); }
+        h1, h2 { text-align: center; color: #333; }
+        ul { list-style-type: none; padding: 0; }
+        li { padding: 10px; border-bottom: 1px solid #ccc; display: flex; justify-content: space-between; align-items: center; }
+        li:last-child { border-bottom: none; }
+        button { padding: 5px 10px; border: none; background: #007BFF; color: #fff; border-radius: 4px; cursor: pointer; }
+        button:hover { background: #0056b3; }
+        .empty-message { text-align: center; color: #999; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>課程選擇結果</h1>
+        <div id="resultContainer"></div>
+        <button onclick="returnToSelection()">返回選課頁面</button>
+    </div>
+
+    <script>
+        function loadResults() {
+            let data;
+            try {
+                data = JSON.parse(localStorage.getItem('selectionData')) || { userName: '', courses: [] };
+            } catch (e) {
+                console.error("無法載入選課資料：", e);
+                data = { userName: '', courses: [] };
+            }
+
+            const container = document.getElementById('resultContainer');
+            container.innerHTML = ''; // 清空容器內容
+
+            if (!data.userName || data.courses.length === 0) {
+                container.innerHTML = '<p class="empty-message">尚未選入任何課程，請返回重新選課。</p>';
+                return;
+            }
+
+            container.innerHTML = `<h2>${data.userName} 的選課</h2>`;
+
+            const ul = document.createElement('ul');
+            data.courses.forEach((course, index) => {
+                const li = document.createElement('li');
+                li.textContent = course;
+
+                const editButton = document.createElement('button');
+                editButton.textContent = '編輯';
+                editButton.onclick = () => editCourse(index);
+
+                const deleteButton = document.createElement('button');
+                deleteButton.textContent = '刪除';
+                deleteButton.style.marginLeft = '5px';
+                deleteButton.onclick = () => deleteCourse(index);
+
+                li.appendChild(editButton);
+                li.appendChild(deleteButton);
+                ul.appendChild(li);
+            });
+
+            container.appendChild(ul);
+        }
+
+        function editCourse(index) {
+            const newCourse = prompt("請輸入新的課程名稱：");
+            if (newCourse) {
+                const data = JSON.parse(localStorage.getItem('selectionData'));
+                data.courses[index] = newCourse;
+                localStorage.setItem('selectionData', JSON.stringify(data));
+                loadResults();
+            }
+        }
+
+        function deleteCourse(index) {
+            const data = JSON.parse(localStorage.getItem('selectionData'));
+            data.courses.splice(index, 1);
+            localStorage.setItem('selectionData', JSON.stringify(data));
+            loadResults();
+        }
+
+        function returnToSelection() {
+            window.location.href = './index.html';
+        }
+
+        window.onload = loadResults;
+    </script>
+</body>
+</html>

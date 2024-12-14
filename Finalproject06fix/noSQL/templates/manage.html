@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>課程管理</title>
+</head>
+<body>
+    <h1>課程管理頁面</h1>
+    <ul>
+        {% for course in courses %}
+            <li>
+                <strong>{{ course.name }}</strong> - {{ course.college }} / {{ course.department }}
+                <button onclick="deleteCourse('{{ course.name }}')">刪除</button>
+            </li>
+        {% endfor %}
+    </ul>
+    <script>
+        async function deleteCourse(courseName) {
+            const response = await fetch(`/delete_course/${courseName}`, {
+                method: 'POST'
+            });
+            const result = await response.json();
+            if (result.deleted_count > 0) {
+                alert('刪除成功');
+                location.reload();
+            } else {
+                alert('刪除失敗');
+            }
+        }
+    </script>
+</body>
+</html>
